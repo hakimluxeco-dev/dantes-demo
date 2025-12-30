@@ -1,0 +1,213 @@
+/* --- AI Chat Widget --- */
+#ai-chat-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 10000;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Floating Action Button */
+#chat-fab {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--dantes-red);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+}
+
+#chat-fab:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    background: #FF2E2E;
+    /* Slightly lighter red */
+}
+
+/* Chat Window */
+#chat-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 350px;
+    height: 500px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform-origin: bottom right;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+#chat-window.hidden {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+    pointer-events: none;
+    display: none;
+    /* simple helper, though opacity handles anim */
+}
+
+#chat-window:not(.hidden) {
+    display: flex;
+    /* ensure it's visible */
+    animation: popIn 0.3s forwards;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Header */
+.chat-header {
+    background: linear-gradient(135deg, var(--dantes-red), #8B0000);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chat-title {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.chat-icon {
+    font-size: 1.2rem;
+}
+
+#close-chat {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    opacity: 0.8;
+}
+
+#close-chat:hover {
+    opacity: 1;
+}
+
+/* Messages Area */
+#chat-messages {
+    flex: 1;
+    padding: 20px;
+    background: #f9f9f9;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.bot-message {
+    background: white;
+    color: #333;
+    border-bottom-left-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    align-self: flex-start;
+}
+
+.user-message {
+    background: var(--dantes-red);
+    color: white;
+    border-bottom-right-radius: 2px;
+    align-self: flex-end;
+    box-shadow: 0 1px 3px rgba(180, 0, 0, 0.2);
+}
+
+/* Input Area */
+.chat-input-area {
+    padding: 15px;
+    background: white;
+    border-top: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#chat-input {
+    flex: 1;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    padding: 10px 15px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+}
+
+#chat-input:focus {
+    border-color: var(--dantes-red);
+}
+
+#send-chat-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--dantes-red);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+#send-chat-btn:hover {
+    background: #cc0000;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    #chat-window {
+        bottom: 0px;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        /* Full screen on mobile */
+        border-radius: 0;
+        z-index: 20000;
+        /* Go above everything */
+    }
+
+    #ai-chat-widget {
+        bottom: 20px;
+        right: 20px;
+        /* keep FAB position same, window overrides */
+    }
+}

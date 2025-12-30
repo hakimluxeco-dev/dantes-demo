@@ -1,0 +1,22 @@
+{
+    "name": "Dante's Pizza & Pasta",
+    "short_name": "Dante's",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#121212",
+    "theme_color": "#E30613",
+    "orientation": "portrait",
+    "description": "Authentic Italian Pizza & Pasta in Klerksdorp. Order online or visit us.",
+    "icons": [
+        {
+            "src": "/images/dantes.webp",
+            "type": "image/webp",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/images/dantes.webp",
+            "type": "image/webp",
+            "sizes": "512x512"
+        }
+    ]
+}

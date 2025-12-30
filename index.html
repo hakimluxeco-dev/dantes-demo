@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/webp" href="/images/dantes.webp" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dante's Pizza & Pasta | Real Italian</title>
+    <meta name="description"
+        content="Authentic Italian Pizza & Pasta in Klerksdorp. Order online or visit us for a premium dining experience." />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="manifest" href="/manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Background Particles -->
+    <canvas id="particles-bg"></canvas>
+
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <img src="/images/dantes.webp" alt="Dante's Pizza" class="splash-logo">
+            <p class="splash-powered">Powered by <a href="https://www.maisolutions.co.za" target="_blank">Mai
+                    Solutions</a></p>
+        </div>
+    </div>
+
+    <!-- PWA Install Banner -->
+    <div id="pwa-install-banner" class="pwa-banner">
+        <span>Get the App for easier ordering!</span>
+        <button id="install-btn">Install</button>
+        <button id="close-install" class="close-pwa">&times;</button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="logo">
+            <img src="/images/dantes.webp" alt="Dante's Pizza" class="nav-logo">
+            <span class="brand-text">Dante's Pizza & Pasta</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="javascript:void(0)" id="nav-order-btn">Menu</a></li>
+            <li><a href="#contact-form">Contact Us</a></li>
+            <li><a href="#footer-info">Info & Hours</a></li>
+        </ul>
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="app">
+        <!-- Sections will be injected here or statically defined -->
+        <section id="home" class="parallax-hero">
+            <div class="hero-content animate__animated animate__fadeInUp">
+                <h2>Dante’s Pizza & Pasta</h2>
+                <p>Authentic Italian Food in Klerksdorp</p>
+                <div class="hero-buttons">
+                    <a href="javascript:void(0)" id="hero-order-btn" class="btn-primary">ORDER ONLINE & COLLECT</a>
+                    <a href="https://www.mrd.com/delivery/restaurant/mrd/18663" target="_blank" class="btn-secondary">MR
+                        D DELIVERY</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pizza Gallery Section -->
+        <section id="pizza-gallery" class="section-glass">
+            <h2 class="section-title">Our Delicious Pizzas</h2>
+            <div class="gallery-grid animate__animated animate__fadeInUp">
+                <div class="gallery-item">
+                    <img src="/images/pizza1.jpg" alt="Dante's Authentic Pizza">
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/pasta1.jpg" alt="Dante's Creamy Pasta">
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/pizza2.jpg" alt="Dante's Gourmet Pizza">
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/hero-pizza.jpg" alt="Dante's Signature Pizza">
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/pizza1.jpg" alt="Dante's Pizza Slice">
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/fb-pizza-15.jpg" alt="Dante's Delicious Pizza">
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/fb-pizza-8.jpg" alt="Dante's Special Pizza">
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Contact Form Section -->
+        <section id="contact-form" class="section-glass">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="form-container animate__animated animate__fadeInUp">
+                <form id="dantes-contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" rows="4" placeholder="How can we help you?" required></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">SEND MESSAGE</button>
+                        <a href="https://wa.me/27832882475" target="_blank" class="btn-secondary whatsapp-btn">
+                            Chat on WhatsApp
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Contact & Info Section (Live Replica) -->
+        <section id="footer-info" class="footer-info-section">
+            <div class="footer-container">
+                <!-- Column 1: Brand -->
+                <div class="footer-col brand-col">
+                    <img src="/images/dantes.webp" alt="Dante's Authentic Italian Pizza" class="footer-logo">
+                </div>
+
+                <!-- Column 2: Hours -->
+                <div class="footer-col hours-col">
+                    <div class="icon-header">
+                        <img src="https://img.icons8.com/ios/50/E30613/clock--v1.png" alt="Clock">
+                        <h3>OPERATING HOURS</h3>
+                    </div>
+                    <ul>
+                        <li><span class="day">MON :</span> 12h00 – 21h00</li>
+                        <li><span class="day">TUES :</span> 10h30 – 21h00</li>
+                        <li><span class="day">WED :</span> 10h30 – 21h00</li>
+                        <li><span class="day">THU :</span> 10h30 – 21h00</li>
+                        <li><span class="day">FRI :</span> 10h30 – 21h00</li>
+                        <li><span class="day">SAT :</span> 10h30 – 21h00</li>
+                        <li><span class="day">SUN :</span> Closed</li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Contact -->
+                <div class="footer-col contact-col">
+                    <div class="contact-item">
+                        <img src="https://img.icons8.com/ios-filled/50/E30613/phone.png" alt="Phone">
+                        <div class="phones">
+                            <a href="tel:0184682727">018 468 2727</a>
+                            <a href="tel:0730186502">073 018 6502</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-divider"></div>
+
+                    <div class="contact-item">
+                        <img src="https://img.icons8.com/ios-filled/50/E30613/marker.png" alt="Location">
+                        <div class="address">
+                            <p>La Piazza Square</p>
+                            <p>26 Central Avenue</p>
+                            <p>Flamwood</p>
+                            <p>Klerksdorp</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright-bar">
+                <p>Copyright © 2025 Dante's Pizza & Pasta Klerksdorp<br>Powered by <a
+                        href="https://www.maisolutions.co.za" target="_blank">Mai Solutions</a></p>
+            </div>
+        </section>
+
+        <!-- Lightbox Modal -->
+        <div id="lightbox" class="lightbox">
+            <span class="close-lightbox">&times;</span>
+            <img class="lightbox-content" id="lightbox-img">
+            <div id="lightbox-caption"></div>
+        </div>
+    </main>
+
+    <!-- Floating WhatsApp (Removed) -->
+    <!-- <a href="https://wa.me/27769493639" target="_blank" class="floating-whatsapp">...</a> -->
+
+    <!-- Order Modal (Hidden by default) -->
+    <div id="order-modal" class="order-modal" style="display:none;">
+        <button class="close-order">&times;</button>
+        <div class="modal-iframe-container">
+            <iframe
+                src="https://www.foodbooking.com/ordering/restaurant/menu?restaurant_uid=8d7e22c6-3290-4a07-ba3f-983ebec07928"
+                width="100%" height="100%" style="border:none;" title="Dantes Online Menu"></iframe>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp (Removed) -->
+    <!-- <a href="https://wa.me/27769493639" target="_blank" class="floating-whatsapp">...</a> -->
+
+    <!-- AI Chat Widget -->
+    <div id="ai-chat-widget">
+        <!-- Chat Window (Initially Hidden) -->
+        <div id="chat-window" class="hidden">
+            <div class="chat-header">
+                <span>Dante's AI Assistant 🇮🇹</span>
+                <button id="close-chat">&times;</button>
+            </div>
+            <div class="chat-body" id="chat-messages">
+                <div class="bot-msg">
+                    Ciao! 👋 I'm Dante's virtual assistant. I can help you with:<br><br>
+                    🍕 <b>Menu & Specials</b><br>
+                    🕒 <b>Opening Hours</b><br>
+                    📍 <b>Location & Contact</b><br>
+                    🛵 <b>Delivery (Mr D)</b><br><br>
+                    What would you like to know?
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Type a message..." autocomplete="off">
+                <button id="chat-send">➤</button>
+            </div>
+        </div>
+
+        <!-- Toggle Button (FAB) -->
+        <button id="chat-fab">
+            💬
+        </button>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
