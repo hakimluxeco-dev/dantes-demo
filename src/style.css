@@ -840,7 +840,11 @@ h3 {
     }
 
     .brand-text {
-        display: none;
+        display: block;
+        font-size: 0.8rem;
+        width: 160px;
+        /* Prevent wrapping issues if needed, or let it flow */
+        line-height: 1.2;
     }
 
     .hamburger {
