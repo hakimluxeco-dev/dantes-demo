@@ -195,18 +195,36 @@ const lightboxCaption = document.getElementById('lightbox-caption');
 const closeBtn = document.querySelector('.close-lightbox');
 
 // Order Modal Logic
-// Order Logic - Proxy Nav Button to Hero Button (FoodBooking)
 const heroOrderBtn = document.getElementById('hero-order-btn');
 const navOrderBtn = document.getElementById('nav-order-btn');
+const stickyProxyBtn = document.getElementById('sticky-order-proxy');
 
+// Nav Proxy
 if (navOrderBtn && heroOrderBtn) {
     navOrderBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        // Trigger the Hero button which has the GloriaFood script attached
         heroOrderBtn.click();
     });
 }
-// Old modal logic removed
+
+// Sticky Proxy Logic
+if (stickyProxyBtn && heroOrderBtn) {
+    // Click Handler
+    stickyProxyBtn.addEventListener('click', () => {
+        heroOrderBtn.click();
+    });
+
+    // Scroll Handler (Show only when Hero button is scrolled out of view)
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            stickyProxyBtn.classList.add('show-sticky');
+            stickyProxyBtn.style.display = 'block'; // Ensure display is toggled
+        } else {
+            stickyProxyBtn.classList.remove('show-sticky');
+            stickyProxyBtn.style.display = 'none';
+        }
+    });
+}
 
 
 window.openLightbox = (src, title) => {
