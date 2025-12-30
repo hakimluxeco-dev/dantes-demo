@@ -1234,13 +1234,15 @@ h3 {
 /* Show only on scroll? Or always? */
 .show-sticky {
     display: block;
-    animation: bounceInUp 0.6s ease;
+    animation: fadeInUp 0.5s ease;
+    /* Matches Hero's feel */
 }
 
-@keyframes bounceInUp {
+/* Ensure fadeInUp is available or define it standard */
+@keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translate3d(0, 50px, 0);
+        transform: translate3d(0, 40px, 0);
     }
 
     to {
