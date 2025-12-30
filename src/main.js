@@ -194,31 +194,40 @@ const lightboxImg = document.getElementById('lightbox-img');
 const lightboxCaption = document.getElementById('lightbox-caption');
 const closeBtn = document.querySelector('.close-lightbox');
 
-// Order Modal Logic
-const heroOrderBtn = document.getElementById('hero-order-btn');
+// Order Logic - Proxy Nav & Sticky Buttons to Real FoodBooking Button
+const heroOrderReal = document.getElementById('hero-order-real'); // The hidden span
+const heroOrderProxy = document.getElementById('hero-order-proxy'); // The visible red button
 const navOrderBtn = document.getElementById('nav-order-btn');
 const stickyProxyBtn = document.getElementById('sticky-order-proxy');
 
-// Nav Proxy
-if (navOrderBtn && heroOrderBtn) {
-    navOrderBtn.addEventListener('click', (e) => {
+// 1. Hero Proxy Click -> Trigger Real
+if (heroOrderProxy && heroOrderReal) {
+    heroOrderProxy.addEventListener('click', (e) => {
         e.preventDefault();
-        heroOrderBtn.click();
+        heroOrderReal.click();
     });
 }
 
-// Sticky Proxy Logic
-if (stickyProxyBtn && heroOrderBtn) {
-    // Click Handler
+// 2. Nav Proxy Click -> Trigger Real
+if (navOrderBtn && heroOrderReal) {
+    navOrderBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        heroOrderReal.click();
+    });
+}
+
+// 3. Sticky Proxy Logic
+if (stickyProxyBtn && heroOrderReal) {
+    // Click Handler -> Trigger Real
     stickyProxyBtn.addEventListener('click', () => {
-        heroOrderBtn.click();
+        heroOrderReal.click();
     });
 
-    // Scroll Handler (Show only when Hero button is scrolled out of view)
+    // Scroll Handler
     window.addEventListener('scroll', () => {
         if (window.scrollY > 400) {
             stickyProxyBtn.classList.add('show-sticky');
-            stickyProxyBtn.style.display = 'block'; // Ensure display is toggled
+            stickyProxyBtn.style.display = 'block';
         } else {
             stickyProxyBtn.classList.remove('show-sticky');
             stickyProxyBtn.style.display = 'none';
