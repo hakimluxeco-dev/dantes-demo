@@ -491,7 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 opacity: 1,
                 duration: 0.8,
                 ease: "power3.out",
-                delay: 0.5,
+                delay: 5.0,
                 onComplete: () => {
                     // Then auto-open the chat window
                     openChat();
