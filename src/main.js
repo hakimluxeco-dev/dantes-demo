@@ -548,11 +548,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.chatWaitingForMenu && (msg.includes('yes') || msg.includes('sure') || msg.includes('ok') || msg.includes('please') || msg.includes('yeah'))) {
                 window.chatWaitingForMenu = false;
                 setTimeout(() => {
-                    setTimeout(() => {
-                        const menuBtn = document.getElementById('nav-order-btn');
-                        if (menuBtn) menuBtn.click();
-                    }, 500);
-                }, 500);
+                    const heroBtn = document.getElementById('hero-order-btn');
+                    const navBtn = document.getElementById('nav-order-btn');
+
+                    if (heroBtn) {
+                        heroBtn.click();
+                        console.log('AI triggered hero-order-btn');
+                    } else if (navBtn) {
+                        navBtn.click();
+                        console.log('AI triggered nav-order-btn');
+                    }
+                }, 800);
                 return `🍕 Opening our menu for you now! Check out all our delicious options!`;
             }
             if (window.chatWaitingForMenu && (msg.includes('no') || msg.includes('nah') || msg.includes('cancel'))) {
