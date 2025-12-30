@@ -571,13 +571,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 return `🛵 We deliver through Mr D! Would you like me to open the Mr D app for you?`;
             }
             if (msg.includes('order')) {
-                setTimeout(() => {
-                    const heroBtn = document.getElementById('hero-order-btn');
-                    const navBtn = document.getElementById('nav-order-btn');
-                    if (heroBtn) heroBtn.click();
-                    else if (navBtn) navBtn.click();
-                }, 1000);
-                return `🍕 Opening our online menu for you! You can choose collection or delivery.`;
+                // Immediate attempt to open
+                const btn = document.querySelector('.glf-button');
+                if (btn) {
+                    // Use a small timeout to let the UI update first
+                    setTimeout(() => btn.click(), 100);
+                }
+                return `🍕 Opening our online menu... If it doesn't appear, please click "ORDER ONLINE" above!`;
             }
             // Check if waiting for Mr D confirmation
             if (window.chatWaitingForMrD && (msg.includes('yes') || msg.includes('sure') || msg.includes('ok') || msg.includes('please') || msg.includes('yeah'))) {
