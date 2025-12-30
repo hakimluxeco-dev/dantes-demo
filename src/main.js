@@ -571,7 +571,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 return `🛵 We deliver through Mr D! Would you like me to open the Mr D app for you?`;
             }
             if (msg.includes('order')) {
-                return `🛵 You can order online through our website (click ORDER ONLINE & COLLECT) or use Mr D Delivery for home delivery! Just ask me about "delivery" if you want Mr D.`;
+                setTimeout(() => {
+                    const heroBtn = document.getElementById('hero-order-btn');
+                    const navBtn = document.getElementById('nav-order-btn');
+                    if (heroBtn) heroBtn.click();
+                    else if (navBtn) navBtn.click();
+                }, 1000);
+                return `🍕 Opening our online menu for you! You can choose collection or delivery.`;
             }
             // Check if waiting for Mr D confirmation
             if (window.chatWaitingForMrD && (msg.includes('yes') || msg.includes('sure') || msg.includes('ok') || msg.includes('please') || msg.includes('yeah'))) {
