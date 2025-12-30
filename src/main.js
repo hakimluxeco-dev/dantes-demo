@@ -540,10 +540,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }, 1000);
                 return `🍕 Opening our full menu for you now! Browse our delicious pizzas and pastas.`;
             }
-            if (msg.includes('special') || msg.includes('deal') || msg.includes('offer') || msg.includes('discount')) {
-                window.chatWaitingForMenu = true;
-                return `🎉 We have amazing daily specials and combo deals! Would you like me to show you our full menu?`;
-            }
+            // Specials and Menu keywords now handled by the unified trigger below
             // Check if waiting for menu confirmation
             if (window.chatWaitingForMenu && (msg.includes('yes') || msg.includes('sure') || msg.includes('ok') || msg.includes('please') || msg.includes('yeah'))) {
                 window.chatWaitingForMenu = false;
@@ -570,14 +567,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.chatWaitingForMrD = true;
                 return `🛵 We deliver through Mr D! Would you like me to open the Mr D app for you?`;
             }
-            if (msg.includes('order')) {
+            if (msg.includes('order') || msg.includes('menu') || msg.includes('food') || msg.includes('eat') || msg.includes('hungry') || msg.includes('special') || msg.includes('deal') || msg.includes('offer')) {
                 // Immediate attempt to open
                 const btn = document.querySelector('.glf-button');
                 if (btn) {
                     // Use a small timeout to let the UI update first
                     setTimeout(() => btn.click(), 100);
                 }
-                return `🍕 Opening our online menu... If it doesn't appear, please click "ORDER ONLINE" above!`;
+                return `🍕 Opening our full menu & specials for you... If it doesn't appear, please click "ORDER ONLINE" above!`;
             }
             // Check if waiting for Mr D confirmation
             if (window.chatWaitingForMrD && (msg.includes('yes') || msg.includes('sure') || msg.includes('ok') || msg.includes('please') || msg.includes('yeah'))) {
