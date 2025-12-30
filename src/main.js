@@ -648,3 +648,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 }); // End DOMContentLoaded for Chat Widget
+
+
+// --- FoodBooking Sticky Tab Killer ---
+// Heuristic to hide the default "Orange" sticky button (small fixed iframes)
+setInterval(() => {
+    const iframes = document.querySelectorAll('iframe[src*="foodbooking"]');
+    iframes.forEach(iframe => {
+        try {
+            const style = window.getComputedStyle(iframe);
+            const height = parseInt(style.height) || 0;
+            const width = parseInt(style.width) || 0;
+
+            // If it's fixed position and "small" (likely the button, not the full menu)
+            if (style.position === 'fixed' && height < 300 && width < 300) {
+                iframe.style.display = 'none';
+                iframe.style.visibility = 'hidden';
+                iframe.style.opacity = '0';
+                iframe.style.pointerEvents = 'none';
+                // Also try to set width/height to 0 to be sure
+                iframe.width = '0';
+                iframe.height = '0';
+            }
+        } catch (e) {
+            // Ignore access errors
+        }
+    });
+
+    // Also target known classes if they exist in main DOM (non-iframe mode)
+    const stickyDivs = document.querySelectorAll('.glf-btn-fixed, .glf-sticky-button');
+    stickyDivs.forEach(el => el.style.display = 'none');
+
+}, 1000);
