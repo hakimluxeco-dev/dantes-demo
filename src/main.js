@@ -287,18 +287,32 @@ const checkBannerDismissal = () => {
 };
 
 // Handle Install Prompt
+// Handle Install Prompt
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-
-    // Show the banner if not snoozed
-    if (installBanner && !checkBannerDismissal()) {
-        installBanner.style.display = 'flex';
-
-        // Optional: Add entrance animation class if desired
-        installBanner.classList.add('animate__animated', 'animate__fadeInUp');
-    }
 });
+
+// Check if App is already installed
+const isAppInstalled = () => {
+    return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+};
+
+// Show Banner Logic (Universal)
+const showBannerIfNeeded = () => {
+    if (isAppInstalled()) return; // Don't show if already installed
+    if (checkBannerDismissal()) return; // Don't show if snoozed
+    if (!installBanner) return;
+
+    // Small delay to be polite
+    setTimeout(() => {
+        installBanner.style.display = 'flex';
+        installBanner.classList.add('animate__animated', 'animate__fadeInUp');
+    }, 2000);
+};
+
+// Initialize
+showBannerIfNeeded();
 
 // Close Banner Logic
 if (closeInstallBtn) {
@@ -312,17 +326,20 @@ if (closeInstallBtn) {
 if (installBtn) {
     installBtn.addEventListener('click', () => {
         if (deferredPrompt) {
+            // Android / Desktop (Native Prompt)
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                }
                 deferredPrompt = null;
                 installBanner.style.display = 'none';
             });
+        } else {
+            // iOS / Unsupported Browsers (Manual Instruction)
+            alert("To install on iOS:\n1. Tap the Share button (square with arrow)\n2. Scroll down and tap 'Add to Home Screen'");
         }
     });
 }
+
+
 
 // Contact Form Handler (Mock)
 const contactForm = document.getElementById('dantes-contact-form');
