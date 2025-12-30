@@ -548,8 +548,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.chatWaitingForMenu && (msg.includes('yes') || msg.includes('sure') || msg.includes('ok') || msg.includes('please') || msg.includes('yeah'))) {
                 window.chatWaitingForMenu = false;
                 setTimeout(() => {
-                    const orderModal = document.getElementById('order-modal');
-                    if (orderModal) orderModal.style.display = 'flex';
+                    setTimeout(() => {
+                        const menuBtn = document.getElementById('nav-order-btn');
+                        if (menuBtn) menuBtn.click();
+                    }, 500);
                 }, 500);
                 return `🍕 Opening our menu for you now! Check out all our delicious options!`;
             }
