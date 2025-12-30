@@ -1200,22 +1200,26 @@ h3 {
         padding: 1rem 1rem;
         font-size: 0.75rem;
     }
-}/* Custom Sticky Order Button (Proxy) */
+}
+
+/* Custom Sticky Order Button (Proxy) */
 .custom-sticky-order {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    top: 100px;
+    left: 20px;
+    bottom: auto;
+    right: auto;
     background-color: var(--color-primary);
     /* Red #E30613 */
     color: white;
     font-weight: 800;
     text-transform: uppercase;
-    padding: 15px 30px;
+    padding: 12px 24px;
     border-radius: 50px;
     box-shadow: 0 5px 20px rgba(227, 6, 19, 0.4);
     z-index: 9999;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: none;
     /* Hidden by default compared to Hero btn, but shown if we want sticky */
