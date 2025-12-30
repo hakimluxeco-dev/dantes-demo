@@ -539,14 +539,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (msg.includes('phone') || msg.includes('call') || msg.includes('contact') || msg.includes('number')) {
                 return `📞 Call us at:\n${restaurantInfo.phone}`;
             }
-            if (msg.includes('menu') || msg.includes('food') || msg.includes('pizza') || msg.includes('pasta') || msg.includes('eat')) {
-                // Open the menu modal after a short delay
-                setTimeout(() => {
-                    const orderModal = document.getElementById('order-modal');
-                    if (orderModal) orderModal.style.display = 'flex';
-                }, 1000);
-                return `🍕 Opening our full menu for you now! Browse our delicious pizzas and pastas.`;
-            }
+            // Legacy 'menu' block removed (merged into main trigger)
             // Specials and Menu keywords now handled by the unified trigger below
             // Check if waiting for menu confirmation
             if (window.chatWaitingForMenu && (msg.includes('yes') || msg.includes('sure') || msg.includes('ok') || msg.includes('please') || msg.includes('yeah'))) {
@@ -574,7 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 window.chatWaitingForMrD = true;
                 return `🛵 We deliver through Mr D! Would you like me to open the Mr D app for you?`;
             }
-            if (msg.includes('order') || msg.includes('menu') || msg.includes('food') || msg.includes('eat') || msg.includes('hungry') || msg.includes('special') || msg.includes('deal') || msg.includes('offer')) {
+            if (msg.includes('order') || msg.includes('menu') || msg.includes('food') || msg.includes('eat') || msg.includes('hungry') || msg.includes('special') || msg.includes('deal') || msg.includes('offer') || msg.includes('pizza') || msg.includes('pasta')) {
                 // Immediate attempt to open
                 const btn = document.querySelector('.glf-button');
                 if (btn) {
