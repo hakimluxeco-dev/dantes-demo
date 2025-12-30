@@ -195,39 +195,19 @@ const lightboxCaption = document.getElementById('lightbox-caption');
 const closeBtn = document.querySelector('.close-lightbox');
 
 // Order Modal Logic
-const orderModal = document.getElementById('order-modal');
-const closeOrderBtn = document.querySelector('.close-order');
+// Order Logic - Proxy Nav Button to Hero Button (FoodBooking)
 const heroOrderBtn = document.getElementById('hero-order-btn');
 const navOrderBtn = document.getElementById('nav-order-btn');
 
-function openModal() {
-    if (orderModal) {
-        orderModal.style.display = 'flex';
-        // GSAP might be failing if not imported? Ensure fallback
-        if (typeof gsap !== 'undefined') {
-            gsap.from('.modal-iframe-container', { y: 50, opacity: 0, duration: 0.4, ease: "power2.out" });
-        }
-    } else {
-        console.error("Order Modal not found in DOM");
-    }
-}
-
-if (heroOrderBtn) heroOrderBtn.addEventListener('click', openModal);
-if (navOrderBtn) navOrderBtn.addEventListener('click', openModal);
-
-if (closeOrderBtn) {
-    closeOrderBtn.addEventListener('click', () => {
-        orderModal.style.display = 'none';
-        // Reload iframe to reset state? No, keep it loaded for speed.
+if (navOrderBtn && heroOrderBtn) {
+    navOrderBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        // Trigger the Hero button which has the GloriaFood script attached
+        heroOrderBtn.click();
     });
 }
+// Old modal logic removed
 
-// Close on outside click
-window.addEventListener('click', (e) => {
-    if (e.target === orderModal) {
-        orderModal.style.display = 'none';
-    }
-});
 
 window.openLightbox = (src, title) => {
     lightbox.style.display = 'flex';
