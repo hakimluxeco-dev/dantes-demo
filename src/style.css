@@ -156,16 +156,19 @@ h3 {
     gap: 2rem;
 }
 
-.nav-links li a {
+.nav-links li a,
+.nav-links li span {
     text-decoration: none;
     color: var(--color-text);
     font-weight: 700;
     font-size: 0.9rem;
     text-transform: uppercase;
     transition: color 0.3s;
+    cursor: pointer;
 }
 
-.nav-links li a:hover {
+.nav-links li a:hover,
+.nav-links li span:hover {
     color: var(--color-primary);
 }
 
